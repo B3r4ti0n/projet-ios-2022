@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78A4C20427FC6FBF0038EA15 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4C20327FC6FBF0038EA15 /* GameSettings.swift */; };
+		78A4C20627FC72660038EA15 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4C20527FC72660038EA15 /* Cell.swift */; };
 		84C3A68527FC58C400FB1853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C3A68427FC58C400FB1853 /* AppDelegate.swift */; };
 		84C3A68727FC58C400FB1853 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C3A68627FC58C400FB1853 /* SceneDelegate.swift */; };
 		84C3A68927FC58C400FB1853 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C3A68827FC58C400FB1853 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		78A4C20327FC6FBF0038EA15 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		78A4C20527FC72660038EA15 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		84C3A68127FC58C400FB1853 /* Projet-ios-2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Projet-ios-2022.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C3A68427FC58C400FB1853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C3A68627FC58C400FB1853 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				84C3A68427FC58C400FB1853 /* AppDelegate.swift */,
+				78A4C20527FC72660038EA15 /* Cell.swift */,
 				84C3A68627FC58C400FB1853 /* SceneDelegate.swift */,
 				78A4C20327FC6FBF0038EA15 /* GameSettings.swift */,
 				84C3A68827FC58C400FB1853 /* ViewController.swift */,
@@ -143,6 +146,7 @@
 			files = (
 				78A4C20427FC6FBF0038EA15 /* GameSettings.swift in Sources */,
 				84C3A68927FC58C400FB1853 /* ViewController.swift in Sources */,
+				78A4C20627FC72660038EA15 /* Cell.swift in Sources */,
 				84C3A68527FC58C400FB1853 /* AppDelegate.swift in Sources */,
 				84C3A68727FC58C400FB1853 /* SceneDelegate.swift in Sources */,
 			);
