@@ -16,6 +16,11 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func goToSettings(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "settings") as? SettingsViewController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     @IBAction func goToScoreboard(_ sender: Any) {
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "scoreboard") as? TableViewController{
                 self.navigationController?.pushViewController(vc, animated: true)

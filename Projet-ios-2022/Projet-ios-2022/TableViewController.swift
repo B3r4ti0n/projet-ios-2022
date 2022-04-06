@@ -35,7 +35,8 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+
         var db: Firestore!
         // Do any additional setup after loading the view.
         
