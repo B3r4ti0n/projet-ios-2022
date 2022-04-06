@@ -21,5 +21,10 @@ class ViewController: UIViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
     }
+    @IBAction func goToPlay(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "minesweeper") as? GameViewController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
