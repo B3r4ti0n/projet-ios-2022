@@ -12,6 +12,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
+        
+        let settings = Setting()
+        if settings.settingsJson == nil{
+            settings.writeSave(username: "USER", highScore: 0, difficulty: 0)
+        }
+    
         // Do any additional setup after loading the view.
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -170,13 +170,55 @@
                     <view key="view" contentMode="scaleToFill" id="LIf-xJ-e3S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3pO-37-hKb">
+                                <rect key="frame" x="224" y="203" width="97" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pseudo :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJm-rR-ZGa">
+                                <rect key="frame" x="77" y="195" width="114" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjg-Jb-Wsc">
+                                <rect key="frame" x="136" y="648" width="142" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="5Li-5l-Ybu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Sauvegarder"/>
+                                <connections>
+                                    <action selector="saveSettings:" destination="Vac-80-0xo" eventType="touchUpInside" id="Oxi-so-KND"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pAA-K1-8cO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="trailing" secondItem="jJm-rR-ZGa" secondAttribute="trailing" constant="223" id="1ZL-1b-xgW"/>
+                            <constraint firstItem="jJm-rR-ZGa" firstAttribute="top" secondItem="pAA-K1-8cO" secondAttribute="top" constant="151" id="5JK-Lj-4fW"/>
+                            <constraint firstItem="3pO-37-hKb" firstAttribute="leading" secondItem="jJm-rR-ZGa" secondAttribute="trailing" constant="33" id="Gc5-ZU-PZM"/>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="bottom" secondItem="Rjg-Jb-Wsc" secondAttribute="bottom" constant="148" id="VpO-eK-331"/>
+                            <constraint firstItem="jJm-rR-ZGa" firstAttribute="leading" secondItem="pAA-K1-8cO" secondAttribute="leading" constant="77" id="Yn2-bR-ztZ"/>
+                            <constraint firstItem="Rjg-Jb-Wsc" firstAttribute="leading" secondItem="pAA-K1-8cO" secondAttribute="leading" constant="136" id="Zgb-Z8-s7Z"/>
+                            <constraint firstItem="Rjg-Jb-Wsc" firstAttribute="centerX" secondItem="pAA-K1-8cO" secondAttribute="centerX" id="dVR-kk-IeP"/>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="bottom" secondItem="3pO-37-hKb" secondAttribute="bottom" constant="625" id="err-wm-PeC"/>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="bottom" secondItem="jJm-rR-ZGa" secondAttribute="bottom" constant="616" id="gh4-yD-mA1"/>
+                            <constraint firstItem="3pO-37-hKb" firstAttribute="top" secondItem="pAA-K1-8cO" secondAttribute="top" constant="159" id="kiq-uU-m8J"/>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="trailing" secondItem="Rjg-Jb-Wsc" secondAttribute="trailing" constant="136" id="q8i-yy-HAU"/>
+                            <constraint firstItem="pAA-K1-8cO" firstAttribute="trailing" secondItem="3pO-37-hKb" secondAttribute="trailing" constant="93" id="uyt-rp-WvT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="saveButton" destination="Rjg-Jb-Wsc" id="mCJ-Hw-mWL"/>
+                        <outlet property="usernameTextField" destination="3pO-37-hKb" id="oji-nY-64f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfD-Os-6EQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319" y="84"/>
+            <point key="canvasLocation" x="3318.840579710145" y="83.705357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G73-Hc-GCx">
