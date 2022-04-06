@@ -13,9 +13,21 @@ import FirebaseFirestoreSwift
 import Firebase
 
 class ScoreBoardViewController: UIViewController {
+    class Player {
+        var id: Int
+        var username: String
+        var time: Int
+        
+        init(id: Int, username: String, time: Int) {
+            self.id = id
+            self.username = username
+            self.time = time
+        }
+    }
 
     override func viewDidLoad() {
         var db: Firestore!
+        var players: [Player]
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,16 +37,22 @@ class ScoreBoardViewController: UIViewController {
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
-        getCollection(db: db)
+        players = getCollection(db: db)
+        print(players)
     }
 
-    func getCollection(db: Firestore!){
+    func getCollection(db: Firestore!) -> [Player]{
+        var players: [Player] = []
         db.collection("minesweeper").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    let id: Int = Int(document.documentID)!
+                    let username: String = document.data()["username"]! as! String
+                    let time: Int = document.data()["time"]! as! Int
+                    let player = Player(id: id, username: username, time: time)
+                    players.append(player)
                 }
             }
         }
