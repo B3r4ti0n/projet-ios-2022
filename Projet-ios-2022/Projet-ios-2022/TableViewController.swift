@@ -30,6 +30,7 @@ class TableViewController: UITableViewController {
     var players:[Player] = []
     
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var image: UIImageView!
     
 
     override func viewDidLoad() {
@@ -77,6 +78,35 @@ class TableViewController: UITableViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                switch querySnapshot!.documents.count{
+                    case 1:
+                    self.image.image = UIImage(named: "Minesweeper_1")
+                        break
+                    case 2:
+                    self.image.image = UIImage(named: "Minesweeper_2")
+                        break
+                    case 3:
+                    self.image.image = UIImage(named: "Minesweeper_3")
+                        break
+                    case 4:
+                    self.image.image = UIImage(named: "Minesweeper_4")
+                        break
+                    case 5:
+                    self.image.image = UIImage(named: "Minesweeper_5")
+                        break
+                    case 6:
+                    self.image.image = UIImage(named: "Minesweeper_6")
+                        break
+                    case 7:
+                    self.image.image = UIImage(named: "Minesweeper_7")
+                        break
+                    case 8:
+                    self.image.image = UIImage(named: "Minesweeper_8")
+                        break
+                    default:
+                        self.image.image = UIImage(named: "Minesweeper_bomb")
+                        break
+                }
                 for document in querySnapshot!.documents {
                     let index = querySnapshot!.documents.firstIndex(of: document)! + 1
                     let count = querySnapshot!.documents.count
@@ -90,7 +120,6 @@ class TableViewController: UITableViewController {
                     let player = Player(id: id, username: username, time: time, difficulty: difficulty)
                     self.players.append(player)
                 }
-                self.progressBar.progress = 0
                 self.tableView.reloadData()
             }
         }
