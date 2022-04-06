@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,6 +35,9 @@
                                 <rect key="frame" x="142" y="781" width="130" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="A Propos"/>
+                                <connections>
+                                    <action selector="goToAbout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="514-Mj-72D"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vro-QC-uwS">
                                 <rect key="frame" x="142" y="664" width="130" height="31"/>
@@ -97,6 +100,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="678" y="84"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="sry-vi-amK">
+            <objects>
+                <viewController storyboardIdentifier="about" id="ReX-Jw-BtL" customClass="AboutViewController" customModule="Projet_ios_2022" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z09-dZ-UYW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Propos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44a-tP-zD7">
+                                <rect key="frame" x="152.5" y="85" width="109" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version : 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ho-AV-0lf">
+                                <rect key="frame" x="20" y="177" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créé par : Alexis P, Alexis R, Tristan L, Kilian C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-oP-VO4">
+                                <rect key="frame" x="20" y="229" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JDc-r2-z65"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7ho-AV-0lf" firstAttribute="leading" secondItem="JDc-r2-z65" secondAttribute="leading" constant="20" id="Eie-ZZ-Rfh"/>
+                            <constraint firstItem="2gi-oP-VO4" firstAttribute="top" secondItem="7ho-AV-0lf" secondAttribute="bottom" constant="31" id="Kfk-Qb-k9U"/>
+                            <constraint firstItem="44a-tP-zD7" firstAttribute="centerX" secondItem="JDc-r2-z65" secondAttribute="centerX" id="PL9-U9-Y3b"/>
+                            <constraint firstItem="44a-tP-zD7" firstAttribute="top" secondItem="JDc-r2-z65" secondAttribute="top" constant="41" id="Y2o-su-ufT"/>
+                            <constraint firstItem="7ho-AV-0lf" firstAttribute="top" secondItem="44a-tP-zD7" secondAttribute="bottom" constant="58" id="aek-ag-LFQ"/>
+                            <constraint firstItem="2gi-oP-VO4" firstAttribute="leading" secondItem="JDc-r2-z65" secondAttribute="leading" constant="20" id="rWC-i0-UBc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftO-vT-PcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="677" y="748"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="GT5-iH-DHt">
