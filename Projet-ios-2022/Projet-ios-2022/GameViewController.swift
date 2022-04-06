@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SwiftUI
 
 class GameViewController: UIViewController {
 
-    let numbersOfRows = GameSettings().numberOfRows
-    let numbersOfColumns = GameSettings().numberOfColumns
+    let numbersOfRows = 10
+    let numbersOfColumns = 10
     let numbersOfBombs = GameSettings().numberOfBombs
     let square = GameSettings().squareSize
     
@@ -26,7 +25,7 @@ class GameViewController: UIViewController {
         for j in 0..<numbersOfRows {
             for i in 0..<numbersOfColumns {
                 button = UIButton(frame: CGRect(x: xvalue, y: yvalue, width: 30 , height: 30))
-                button.backgroundColor = .red
+                button.backgroundColor = .yellow
                 button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button.tag = i
                 self.view.addSubview(button)
@@ -36,18 +35,10 @@ class GameViewController: UIViewController {
             xvalue = 55
             yvalue = yvalue + 31
         }
-        
-        /*
-        var button = UIButton()
-        button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 60))
-        button.setTitle("Test", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
-        self.view.addSubview(button)*/
     }
     
     @objc func buttonAction(sender: UIButton!) {
+        print(sender.tag)
         
     }
 }
