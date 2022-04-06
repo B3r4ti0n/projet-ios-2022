@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>652319926879-a6mq4ucdlks5pio5tjk2ogcivpg9brgb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.652319926879-a6mq4ucdlks5pio5tjk2ogcivpg9brgb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAh0Ez9y5LNxKSWm4w8gAyZqX8jlqJBQgw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>652319926879</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>TAKA-Gang.Projet-ios-2022</string>
+	<key>PROJECT_ID</key>
+	<string>iosproj-da0d7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>iosproj-da0d7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:652319926879:ios:0aa14478d47cfbfe73c9ea</string>
+</dict>
+</plist>

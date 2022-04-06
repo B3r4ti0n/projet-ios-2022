@@ -15,5 +15,10 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func goToScoreboard(_ sender: Any) {
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "scoreboard") as? TableViewController{
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+    }
 }
 
