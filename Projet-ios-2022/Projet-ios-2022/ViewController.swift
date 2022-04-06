@@ -37,5 +37,10 @@ class ViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    @IBAction func goToAbout(_ sender: Any) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "about") as? AboutViewController{
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
