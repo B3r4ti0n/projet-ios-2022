@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class Cell: ObservableObject {
     /// The row of the cell on the board
@@ -22,7 +23,8 @@ class Cell: ObservableObject {
 
     /// Whether or not the cell has been flagged
     var isFlagged: Bool
-
+    
+    
     init(row: Int, column: Int) {
         self.row = row
         self.column = column
@@ -30,6 +32,8 @@ class Cell: ObservableObject {
         self.isOpened = false
         self.isFlagged = false
     }
+    
+    
 }
 
 enum Status: Equatable {
@@ -43,3 +47,4 @@ enum Status: Equatable {
     /// There is a bomb in the square
     case bomb
 }
+
