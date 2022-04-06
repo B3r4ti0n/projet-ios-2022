@@ -97,32 +97,33 @@
             </objects>
             <point key="canvasLocation" x="1684.057971014493" y="83.705357142857139"/>
         </scene>
-        <!--Score Board View Controller-->
-        <scene sceneID="ong-4c-SwP">
+        <!--Table View Controller-->
+        <scene sceneID="krh-yB-x75">
             <objects>
-                <viewController storyboardIdentifier="scoreboard" id="hHa-or-jDe" customClass="ScoreBoardViewController" customModule="Projet_ios_2022" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qeV-je-brS">
+                <tableViewController storyboardIdentifier="scoreboard" id="uMj-cz-fcu" customClass="TableViewController" customModule="Projet_ios_2022" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JEv-0T-fRs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hth-0N-d1W">
-                                <rect key="frame" x="162.5" y="132" width="89" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="DbZ-7O-hjc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Hth-0N-d1W" firstAttribute="top" secondItem="DbZ-7O-hjc" secondAttribute="top" constant="88" id="G34-64-g5O"/>
-                            <constraint firstItem="Hth-0N-d1W" firstAttribute="centerX" secondItem="DbZ-7O-hjc" secondAttribute="centerX" id="QaO-Oa-yWa"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jdq-Jh-SDu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="player" id="EWh-JD-hy3">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EWh-JD-hy3" id="gvj-iG-dJR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uMj-cz-fcu" id="y8C-dP-n77"/>
+                            <outlet property="delegate" destination="uMj-cz-fcu" id="tiO-Ed-F8l"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0e-Xt-6QW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2442.0289855072465" y="83.705357142857139"/>
+            <point key="canvasLocation" x="2477" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G73-Hc-GCx">
