@@ -9,8 +9,8 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    let numbersOfRows = 10
-    let numbersOfColumns = 10
+    let numbersOfRows = GameSettings().numberOfRows
+    let numbersOfColumns = GameSettings().numberOfColumns
     let numbersOfBombs = GameSettings().numberOfBombs
     let square = GameSettings().squareSize
     
@@ -25,15 +25,17 @@ class GameViewController: UIViewController {
         for j in 0..<numbersOfRows {
             for i in 0..<numbersOfColumns {
                 button = UIButton(frame: CGRect(x: xvalue, y: yvalue, width: 30 , height: 30))
-                button.backgroundColor = .yellow
+              
+                button.setBackgroundImage(UIImage(named: "Minesweeper_tile"), for: UIControl.State.normal)
+                
                 button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button.tag = i
                 self.view.addSubview(button)
-                xvalue = xvalue + 31
+                xvalue = xvalue + 30
             }
             
             xvalue = 55
-            yvalue = yvalue + 31
+            yvalue = yvalue + 30
         }
     }
     
