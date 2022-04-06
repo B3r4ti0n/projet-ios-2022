@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DÉMINEUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1H-Zu-AE4">
-                                <rect key="frame" x="120.5" y="94" width="173" height="42"/>
+                                <rect key="frame" x="120.5" y="138" width="173" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,14 +45,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minesweeper_1" translatesAutoresizingMaskIntoConstraints="NO" id="wGU-xS-Tan">
-                                <rect key="frame" x="20" y="194" width="111" height="109"/>
+                                <rect key="frame" x="20" y="238" width="111" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="109" id="1Ab-gL-Lc0"/>
                                     <constraint firstAttribute="width" constant="111" id="MdO-Gl-UPj"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minesweeper_Bomb" translatesAutoresizingMaskIntoConstraints="NO" id="gDj-Kv-xgK">
-                                <rect key="frame" x="270" y="194" width="111" height="109"/>
+                                <rect key="frame" x="270" y="238" width="111" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="109" id="j4n-kt-DXf"/>
                                     <constraint firstAttribute="width" constant="111" id="oeA-yP-vXa"/>
@@ -128,13 +128,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="cKW-e9-NNF">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="4"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </progressView>
+                        <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Minesweeper_1" id="oT3-W0-0cE">
+                            <rect key="frame" x="0.0" y="114.5" width="414" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                        </imageView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="player" id="EWh-JD-hy3">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="player" textLabel="uAS-nN-Jo5" style="IBUITableViewCellStyleDefault" id="EWh-JD-hy3">
+                                <rect key="frame" x="0.0" y="48.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EWh-JD-hy3" id="gvj-iG-dJR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uAS-nN-Jo5">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -143,10 +161,14 @@
                             <outlet property="delegate" destination="uMj-cz-fcu" id="tiO-Ed-F8l"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="image" destination="oT3-W0-0cE" id="03f-et-g9Z"/>
+                        <outlet property="progressBar" destination="cKW-e9-NNF" id="pyW-sM-ZSi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0e-Xt-6QW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2477" y="84"/>
+            <point key="canvasLocation" x="2476.811594202899" y="83.705357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G73-Hc-GCx">
