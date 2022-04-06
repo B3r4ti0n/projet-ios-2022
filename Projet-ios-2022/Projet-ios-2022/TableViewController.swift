@@ -16,18 +16,21 @@ class Player {
     var id: Int
     var username: String
     var time: Int
+    var difficulty: Int
     
-    init(id: Int, username: String, time: Int) {
+    init(id: Int, username: String, time: Int, difficulty: Int) {
         self.id = id
         self.username = username
         self.time = time
+        self.difficulty = difficulty
     }
 }
 
 class TableViewController: UITableViewController {
     var players:[Player] = []
     
-
+    @IBOutlet weak var progressBar: UIProgressView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +66,7 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         let player:Player = self.players[indexPath.row]
-        cell.textLabel?.text = player.username
+        cell.textLabel?.text = "\(player.username) | Difficulty : \(player.difficulty) | Score : \(player.time)"
         
         return cell
     }
@@ -75,12 +78,19 @@ class TableViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
+                    let index = querySnapshot!.documents.firstIndex(of: document)! + 1
+                    let count = querySnapshot!.documents.count
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.progressBar.progress = Float(index/count)
+                    }
                     let id: Int = Int(document.documentID)!
                     let username: String = document.data()["username"]! as! String
                     let time: Int = document.data()["time"]! as! Int
-                    let player = Player(id: id, username: username, time: time)
+                    let difficulty: Int = document.data()["difficulty"]! as! Int
+                    let player = Player(id: id, username: username, time: time, difficulty: difficulty)
                     self.players.append(player)
                 }
+                self.progressBar.progress = 0
                 self.tableView.reloadData()
             }
         }
