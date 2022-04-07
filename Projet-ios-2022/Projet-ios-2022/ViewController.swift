@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         
         let settings = Setting()
         if settings.settingsJson == nil{
-            settings.writeSave(username: "USER", highScore: 0, difficulty: 0)
+            settings.writeSave(username: "USER", highScore: 0, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
         }
     
         // Do any additional setup after loading the view.
