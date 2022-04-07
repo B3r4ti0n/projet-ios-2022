@@ -151,9 +151,25 @@
                     <view key="view" contentMode="scaleToFill" id="5ps-Gu-f3e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylD-R1-14w">
+                                <rect key="frame" x="141" y="99" width="133" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EEu-Vf-8Dd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EEu-Vf-8Dd" firstAttribute="trailing" secondItem="ylD-R1-14w" secondAttribute="trailing" constant="140" id="FJX-Cm-dyK"/>
+                            <constraint firstItem="ylD-R1-14w" firstAttribute="leading" secondItem="EEu-Vf-8Dd" secondAttribute="leading" constant="141" id="LZw-4z-JGN"/>
+                            <constraint firstItem="ylD-R1-14w" firstAttribute="top" secondItem="EEu-Vf-8Dd" secondAttribute="top" constant="55" id="N2o-4M-SHo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="timerLabel" destination="ylD-R1-14w" id="myS-u4-tkG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMY-a8-qWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
