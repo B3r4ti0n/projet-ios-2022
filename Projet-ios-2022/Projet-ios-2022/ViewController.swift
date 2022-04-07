@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class ViewController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
-
 
     @IBAction func goToSettings(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "settings") as? SettingsViewController{
