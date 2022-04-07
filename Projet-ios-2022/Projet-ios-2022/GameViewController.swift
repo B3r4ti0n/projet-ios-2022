@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
     var timer = Timer()
     var minutes: Int = 0
     var seconds: Int = 0
+    var squareSize: CGFloat = 30
     
     override func viewDidLoad() {
         numbersOfRows = setting.settingsJson?["numberOfRows"] as! Int
@@ -37,9 +38,10 @@ class GameViewController: UIViewController {
         
         super.viewDidLoad()
         
-        var xvalue = self.view.frame.width / 8
+        var xvalue = self.view.frame.width / 16
         var yvalue = (self.view.frame.height / 4) + 25
         var button = UIButton()
+        squareSize = (UIScreen.main.bounds.width / CGFloat(numbersOfColumns)) - 5
        
         
         //random bombs tab
@@ -54,7 +56,7 @@ class GameViewController: UIViewController {
         var countTag: Int = 1
         for j in 0..<numbersOfRows{
             for i in 0..<numbersOfColumns{
-                button = UIButton(frame: CGRect(x: xvalue, y: yvalue, width: 30 , height: 30))
+                button = UIButton(frame: CGRect(x: xvalue, y: yvalue, width: squareSize, height: squareSize))
                 button.setBackgroundImage(UIImage(named: "Minesweeper_tile"), for: UIControl.State.normal)
                 button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
                 button.tag = countTag
@@ -70,10 +72,10 @@ class GameViewController: UIViewController {
                 countTag = countTag + 1
 
                 self.view.addSubview(button)
-                xvalue = xvalue + 30
+                xvalue = xvalue + squareSize
             }
-            xvalue = self.view.frame.width / 8
-            yvalue = yvalue + 30
+            xvalue = self.view.frame.width / 16
+            yvalue = yvalue + squareSize
             print(tabStructure)
         }
         
