@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKT-zY-YDz">
-                                <rect key="frame" x="142" y="727" width="130" height="31"/>
+                                <rect key="frame" x="142" y="756" width="130" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Options"/>
                                 <connections>
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wy-FI-O88">
-                                <rect key="frame" x="142" y="781" width="130" height="31"/>
+                                <rect key="frame" x="142" y="808" width="130" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="A Propos"/>
                                 <connections>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vro-QC-uwS">
-                                <rect key="frame" x="142" y="664" width="130" height="31"/>
+                                <rect key="frame" x="142" y="704" width="130" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="kKU-kT-bJ2"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7x5-4s-hwv">
-                                <rect key="frame" x="120.5" y="605" width="173" height="31"/>
+                                <rect key="frame" x="120.5" y="652" width="173" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="JOUER !!!!!!!!"/>
                                 <connections>
@@ -80,17 +80,17 @@
                             <constraint firstItem="wGU-xS-Tan" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="AwR-db-poi"/>
                             <constraint firstItem="7x5-4s-hwv" firstAttribute="centerX" secondItem="vro-QC-uwS" secondAttribute="centerX" id="CIl-hV-IOf"/>
                             <constraint firstItem="VKT-zY-YDz" firstAttribute="centerX" secondItem="3wy-FI-O88" secondAttribute="centerX" id="FHA-VJ-Zf6"/>
-                            <constraint firstItem="3wy-FI-O88" firstAttribute="top" secondItem="VKT-zY-YDz" secondAttribute="bottom" constant="23" id="Hq4-9R-hVD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3wy-FI-O88" secondAttribute="bottom" constant="50" id="Kjd-2F-Vee"/>
+                            <constraint firstItem="3wy-FI-O88" firstAttribute="top" secondItem="VKT-zY-YDz" secondAttribute="bottom" constant="21" id="Hq4-9R-hVD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3wy-FI-O88" secondAttribute="bottom" constant="23" id="Kjd-2F-Vee"/>
                             <constraint firstItem="wGU-xS-Tan" firstAttribute="top" secondItem="Z1H-Zu-AE4" secondAttribute="bottom" constant="58" id="U1o-NA-MJh"/>
                             <constraint firstItem="3wy-FI-O88" firstAttribute="width" secondItem="VKT-zY-YDz" secondAttribute="width" id="UVn-wg-ZI2"/>
                             <constraint firstItem="7x5-4s-hwv" firstAttribute="width" secondItem="Z1H-Zu-AE4" secondAttribute="width" id="V77-1v-tc6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gDj-Kv-xgK" secondAttribute="trailing" constant="33" id="VNQ-WP-QRM"/>
                             <constraint firstItem="vro-QC-uwS" firstAttribute="centerX" secondItem="VKT-zY-YDz" secondAttribute="centerX" id="cdZ-3j-4Jl"/>
-                            <constraint firstItem="vro-QC-uwS" firstAttribute="top" secondItem="7x5-4s-hwv" secondAttribute="bottom" constant="28" id="ePq-0q-hXz"/>
+                            <constraint firstItem="vro-QC-uwS" firstAttribute="top" secondItem="7x5-4s-hwv" secondAttribute="bottom" constant="21" id="ePq-0q-hXz"/>
                             <constraint firstItem="gDj-Kv-xgK" firstAttribute="top" secondItem="Z1H-Zu-AE4" secondAttribute="bottom" constant="58" id="oPp-rk-8kg"/>
                             <constraint firstItem="Z1H-Zu-AE4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pR5-NB-ulk"/>
-                            <constraint firstItem="VKT-zY-YDz" firstAttribute="top" secondItem="vro-QC-uwS" secondAttribute="bottom" constant="32" id="uyP-54-PvY"/>
+                            <constraint firstItem="VKT-zY-YDz" firstAttribute="top" secondItem="vro-QC-uwS" secondAttribute="bottom" constant="21" id="uyP-54-PvY"/>
                             <constraint firstItem="VKT-zY-YDz" firstAttribute="width" secondItem="vro-QC-uwS" secondAttribute="width" id="wdx-2s-I2G"/>
                             <constraint firstItem="3wy-FI-O88" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="x8O-tD-HAy"/>
                         </constraints>
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftO-vT-PcI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="748"/>
+            <point key="canvasLocation" x="676.81159420289862" y="747.99107142857144"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="GT5-iH-DHt">
