@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s2x-3g-Bj3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -132,11 +132,13 @@
                         <viewLayoutGuide key="safeArea" id="JDc-r2-z65"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7ho-AV-0lf" firstAttribute="leading" secondItem="JDc-r2-z65" secondAttribute="leading" constant="20" id="Eie-ZZ-Rfh"/>
+                            <constraint firstItem="7ho-AV-0lf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JDc-r2-z65" secondAttribute="leading" id="Eie-ZZ-Rfh"/>
                             <constraint firstItem="2gi-oP-VO4" firstAttribute="top" secondItem="7ho-AV-0lf" secondAttribute="bottom" constant="31" id="Kfk-Qb-k9U"/>
                             <constraint firstItem="44a-tP-zD7" firstAttribute="centerX" secondItem="JDc-r2-z65" secondAttribute="centerX" id="PL9-U9-Y3b"/>
+                            <constraint firstItem="JDc-r2-z65" firstAttribute="trailing" secondItem="7ho-AV-0lf" secondAttribute="trailing" constant="302" id="WRd-KT-UDz"/>
                             <constraint firstItem="44a-tP-zD7" firstAttribute="top" secondItem="JDc-r2-z65" secondAttribute="top" constant="41" id="Y2o-su-ufT"/>
                             <constraint firstItem="7ho-AV-0lf" firstAttribute="top" secondItem="44a-tP-zD7" secondAttribute="bottom" constant="58" id="aek-ag-LFQ"/>
+                            <constraint firstItem="JDc-r2-z65" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2gi-oP-VO4" secondAttribute="trailing" symbolic="YES" id="djc-9q-4od"/>
                             <constraint firstItem="2gi-oP-VO4" firstAttribute="leading" secondItem="JDc-r2-z65" secondAttribute="leading" constant="20" id="rWC-i0-UBc"/>
                         </constraints>
                     </view>
@@ -159,6 +161,11 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kti-C0-Lyx">
+                                <rect key="frame" x="159" y="773" width="97" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EEu-Vf-8Dd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -166,9 +173,14 @@
                             <constraint firstItem="EEu-Vf-8Dd" firstAttribute="trailing" secondItem="ylD-R1-14w" secondAttribute="trailing" constant="140" id="FJX-Cm-dyK"/>
                             <constraint firstItem="ylD-R1-14w" firstAttribute="leading" secondItem="EEu-Vf-8Dd" secondAttribute="leading" constant="141" id="LZw-4z-JGN"/>
                             <constraint firstItem="ylD-R1-14w" firstAttribute="top" secondItem="EEu-Vf-8Dd" secondAttribute="top" constant="55" id="N2o-4M-SHo"/>
+                            <constraint firstItem="EEu-Vf-8Dd" firstAttribute="bottom" secondItem="kti-C0-Lyx" secondAttribute="bottom" constant="55" id="QBJ-ZS-FsS"/>
+                            <constraint firstItem="EEu-Vf-8Dd" firstAttribute="trailing" secondItem="kti-C0-Lyx" secondAttribute="trailing" constant="158" id="Vlw-OI-NLA"/>
+                            <constraint firstItem="kti-C0-Lyx" firstAttribute="top" secondItem="EEu-Vf-8Dd" secondAttribute="top" constant="729" id="cgd-BC-7OZ"/>
+                            <constraint firstItem="kti-C0-Lyx" firstAttribute="leading" secondItem="EEu-Vf-8Dd" secondAttribute="leading" constant="159" id="f08-54-iZ5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gameFinishTextField" destination="kti-C0-Lyx" id="mRf-gu-nZA"/>
                         <outlet property="timerLabel" destination="ylD-R1-14w" id="myS-u4-tkG"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
     var minutes: Int = 0
     var seconds: Int = 0
     var squareSize: CGFloat = 30
+    var gameFinishCount: Int = 0
+    @IBOutlet weak var gameFinishTextField: UITextField!
     
     override func viewDidLoad() {
         numbersOfRows = setting.settingsJson?["numberOfRows"] as! Int
@@ -76,7 +78,6 @@ class GameViewController: UIViewController {
             }
             xvalue = self.view.frame.width / 16
             yvalue = yvalue + squareSize
-            print(tabStructure)
         }
         
         //Assign Numbers On Tiles next to bombs
@@ -96,13 +97,15 @@ class GameViewController: UIViewController {
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        print(sender.tag)
-        if randomTab.contains(sender.tag){
-            for index in 0..<tabStructure.count{
-                displayButtonImageEnable(indexButton: index, indexCell: index)
+        
+            if randomTab.contains(sender.tag){
+                displayTheTileImageOfAllButtonInTheGrid()
+            }else{
+                showPreciseTileOfGridButton(indexButton: sender.tag-1, indexCell: sender.tag-1)
+                gameFinishCount+=1
             }
-        }else{
-            displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag-1)
+        if gameFinishCount == (numbersOfRows * numbersOfColumns) - numbersOfBombs{
+            displayTheTileImageOfAllButtonInTheGrid()
         }
     }
     
@@ -240,8 +243,15 @@ class GameViewController: UIViewController {
         return tabToReturn
         
     }
-    func displayButtonImageEnable(indexButton: Int , indexCell: Int){
+    
+    func showPreciseTileOfGridButton(indexButton: Int , indexCell: Int){
             buttonsTab[indexButton].isEnabled = false
             buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
+    }
+    
+    func displayTheTileImageOfAllButtonInTheGrid(){
+        for index in 0..<tabStructure.count{
+            showPreciseTileOfGridButton(indexButton: index, indexCell: index)
+        }
     }
 }
