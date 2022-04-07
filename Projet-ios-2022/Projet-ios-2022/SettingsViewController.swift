@@ -73,10 +73,11 @@ class SettingsViewController: UIViewController {
     //Click on Save Button
     @IBAction func saveSettings(_ sender: Any) {
         settings.writeSave(username: usernameTextField.text!, highScore: self.settingsJson["highTime"] as! Int, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
+        
         self.loading.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.loading.stopAnimating()
             
+            self.loading.stopAnimating()
             self.saveButton.setTitle("Compte Modifié", for: .normal)
             self.saveButton.backgroundColor = UIColor.green
             self.saveButton.layer.opacity = 0.8
