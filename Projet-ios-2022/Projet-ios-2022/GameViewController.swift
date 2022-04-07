@@ -15,7 +15,13 @@ class GameViewController: UIViewController {
     var randomTab:[Int] = []
     var tabStructure:[Int] = []
     var buttonsTab: [UIButton] = []
+    var timer = Timer()
+    
     override func viewDidLoad() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            print("Timer fired!")
+        }
+        
         super.viewDidLoad()
         
         var xvalue = self.view.frame.width / 8
@@ -42,7 +48,6 @@ class GameViewController: UIViewController {
                 button.tag = countTag
                 
                 buttonsTab.append(button)
-                countTag = countTag + 1
                 
                 if randomTab.contains(countTag-1){
                     tabStructure.append(-1)
@@ -53,6 +58,7 @@ class GameViewController: UIViewController {
                 
                 self.view.addSubview(button)
                 xvalue = xvalue + 30
+                countTag = countTag + 1
             }
             xvalue = self.view.frame.width / 8
             yvalue = yvalue + 30
@@ -87,7 +93,7 @@ class GameViewController: UIViewController {
     func verification (id : Int) -> [Int]{
         
         let gauche = [0,10,20,30,40,50,60,70,80,90]
-        let droite = [1,11,21,31,41,51,61,71,81,91]
+        let droite = [1,11,21,31,41,51,61,71,81,91, 101]
         var tabToReturn: [Int] = []
          
         func Gauche (id : Int)->Int?{
@@ -220,6 +226,7 @@ class GameViewController: UIViewController {
     }
     func displayImageEnable(){
         for index in 0...tabStructure.count-1{
+            buttonsTab[index].isEnabled = false
             if !(tabStructure[index] == -1){
                 buttonsTab[index].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[index])"), for: UIControl.State.normal)
             }else{
