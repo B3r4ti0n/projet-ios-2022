@@ -13,13 +13,11 @@ import FirebaseFirestoreSwift
 import Firebase
 
 class Player {
-    var id: Int
     var username: String
     var time: Int
     var difficulty: Int
     
-    init(id: Int, username: String, time: Int, difficulty: Int) {
-        self.id = id
+    init(username: String, time: Int, difficulty: Int) {
         self.username = username
         self.time = time
         self.difficulty = difficulty
@@ -65,7 +63,7 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         let player:Player = self.players[indexPath.row]
-        cell.textLabel?.text = "\(player.username) | Difficulty : \(player.difficulty) | Score : \(player.time)"
+        cell.textLabel?.text = "\(player.username) | Difficulty : \(player.difficulty) | Time : \(player.time)"
         
         return cell
     }
@@ -90,11 +88,10 @@ class TableViewController: UITableViewController {
                         self.progressBar.progress = Float(index/count)
                     }
                     
-                    let id: Int = Int(document.documentID)!
                     let username: String = document.data()["username"]! as! String
                     let time: Int = document.data()["time"]! as! Int
                     let difficulty: Int = document.data()["difficulty"]! as! Int
-                    let player = Player(id: id, username: username, time: time, difficulty: difficulty)
+                    let player = Player(username: username, time: time, difficulty: difficulty)
                     self.players.append(player)
                 }
                 self.tableView.reloadData()
