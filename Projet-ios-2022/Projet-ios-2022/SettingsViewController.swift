@@ -39,11 +39,12 @@ class Setting{
     
     //Write json on file
     func writeSave(username: String, highScore: Int, difficulty: Int, numberOfBombs: Int, numberOfColumns: Int, numberOfRows: Int){
-        /// The number of rows on the board
+        
         let line = "{\"username\":\"\(username)\",\"highTime\":\(highScore),\"difficulty\":\(difficulty), \"numberOfBombs\":\(numberOfBombs), \"numberOfColumns\":\(numberOfColumns), \"numberOfRows\":\(numberOfRows)}"
         do {
             try line.write(to: self.fileURL!, atomically: false, encoding: .utf8)
         }
+        
         catch {/* error handling here */}
     }
 }
@@ -72,10 +73,11 @@ class SettingsViewController: UIViewController {
     //Click on Save Button
     @IBAction func saveSettings(_ sender: Any) {
         settings.writeSave(username: usernameTextField.text!, highScore: self.settingsJson["highTime"] as! Int, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
+        
         self.loading.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.loading.stopAnimating()
             
+            self.loading.stopAnimating()
             self.saveButton.setTitle("Compte Modifié", for: .normal)
             self.saveButton.backgroundColor = UIColor.green
             self.saveButton.layer.opacity = 0.8

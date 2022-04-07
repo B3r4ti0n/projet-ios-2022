@@ -13,13 +13,11 @@ import FirebaseFirestoreSwift
 import Firebase
 
 class Player {
-    var id: Int
     var username: String
     var time: Int
     var difficulty: Int
     
-    init(id: Int, username: String, time: Int, difficulty: Int) {
-        self.id = id
+    init(username: String, time: Int, difficulty: Int) {
         self.username = username
         self.time = time
         self.difficulty = difficulty
@@ -27,25 +25,22 @@ class Player {
 }
 
 class TableViewController: UITableViewController {
+    //Definition Variables
     var players:[Player] = []
     
+    //Definition UI
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var image: UIImageView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-
-        var db: Firestore!
-        // Do any additional setup after loading the view.
         
+        var db: Firestore!
         let settings = FirestoreSettings()
-
         Firestore.firestore().settings = settings
         
         db = Firestore.firestore()
-        
         getCollection(db: db)
     }
 
@@ -68,7 +63,7 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         let player:Player = self.players[indexPath.row]
-        cell.textLabel?.text = "\(player.username) | Difficulty : \(player.difficulty) | Score : \(player.time)"
+        cell.textLabel?.text = "\(player.username) | Difficulty : \(player.difficulty) | Time : \(player.time)"
         
         return cell
     }
@@ -79,46 +74,24 @@ class TableViewController: UITableViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                switch querySnapshot!.documents.count{
-                    case 1:
-                    self.image.image = UIImage(named: "Minesweeper_1")
-                        break
-                    case 2:
-                    self.image.image = UIImage(named: "Minesweeper_2")
-                        break
-                    case 3:
-                    self.image.image = UIImage(named: "Minesweeper_3")
-                        break
-                    case 4:
-                    self.image.image = UIImage(named: "Minesweeper_4")
-                        break
-                    case 5:
-                    self.image.image = UIImage(named: "Minesweeper_5")
-                        break
-                    case 6:
-                    self.image.image = UIImage(named: "Minesweeper_6")
-                        break
-                    case 7:
-                    self.image.image = UIImage(named: "Minesweeper_7")
-                        break
-                    case 8:
-                    self.image.image = UIImage(named: "Minesweeper_8")
-                        break
-                    default:
-                        self.image.image = UIImage(named: "Minesweeper_bomb")
-                        break
+                if querySnapshot!.documents.count < 9{
+                    self.image.image = UIImage(named: "Minesweeper_\(querySnapshot!.documents.count)")
                 }
+                else{
+                    self.image.image = UIImage(named: "Minesweeper_\(-1)")
+                }
+                
                 for document in querySnapshot!.documents {
                     let index = querySnapshot!.documents.firstIndex(of: document)! + 1
                     let count = querySnapshot!.documents.count
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.progressBar.progress = Float(index/count)
                     }
-                    let id: Int = Int(document.documentID)!
+                    
                     let username: String = document.data()["username"]! as! String
                     let time: Int = document.data()["time"]! as! Int
                     let difficulty: Int = document.data()["difficulty"]! as! Int
-                    let player = Player(id: id, username: username, time: time, difficulty: difficulty)
+                    let player = Player(username: username, time: time, difficulty: difficulty)
                     self.players.append(player)
                 }
                 self.tableView.reloadData()

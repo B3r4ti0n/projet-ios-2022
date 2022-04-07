@@ -106,6 +106,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func buttonAction(sender: UIButton!) {
+<<<<<<< HEAD
         
             if randomTab.contains(sender.tag){
                 displayTheTileImageOfAllButtonInTheGrid()
@@ -115,6 +116,19 @@ class GameViewController: UIViewController {
             }
         if gameFinishCount == (numbersOfRows * numbersOfColumns) - numbersOfBombs{
             displayTheTileImageOfAllButtonInTheGrid()
+=======
+        print(sender.tag)
+        if randomTab.contains(sender.tag-1){
+            self.timer.invalidate()
+            for index in 0..<tabStructure.count{
+                self.displayButtonImageEnable(indexButton: index, indexCell: index)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.performSegue(withIdentifier: "endSegue", sender: self)
+            }
+        }else{
+            self.displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag-1)
+>>>>>>> 87ead2547761928b08695f81224993d4575a7f4e
         }
     }
     
@@ -253,9 +267,15 @@ class GameViewController: UIViewController {
         
     }
     
+<<<<<<< HEAD
     func showPreciseTileOfGridButton(indexButton: Int , indexCell: Int){
             buttonsTab[indexButton].isEnabled = false
             buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
+=======
+    func displayButtonImageEnable(indexButton: Int , indexCell: Int){
+        self.buttonsTab[indexButton].isEnabled = false
+        self.buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
+>>>>>>> 87ead2547761928b08695f81224993d4575a7f4e
     }
     
     func displayTheTileImageOfAllButtonInTheGrid(){
@@ -264,4 +284,3 @@ class GameViewController: UIViewController {
         }
     }
 }
-
