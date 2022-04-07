@@ -67,12 +67,13 @@ class GameViewController: UIViewController {
                 idTileBombTouchTab = verification(id: index+1)
                 for tag in idTileBombTouchTab{
                     let id = tag-1
-                    tabStructure[id] += 1
+                    if tabStructure[id] != -1{
+                        tabStructure[id] += 1
+                    }
                 }
             }
         }
         print(tabStructure)
-        print(buttonsTab)
     }
     
     @objc func buttonAction(sender: UIButton!) {
