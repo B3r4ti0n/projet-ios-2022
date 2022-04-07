@@ -7,56 +7,78 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
-    var fileURL:URL? = nil
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        var settingsJson: [String: AnyObject]
-        
-        let file = "settings.txt" //this is the file. we will write to and read from it
-        //let text = "{\"username\":\"Spriingo\",\"highTime\":1102,\"difficulty\":0}" //just a text
-        
+//Class Setting
+class Setting{
+    //Variables definition
+    var fileURL:URL?
+    let file = "settings.txt" //this is the file. we will write to and read from it
+    var settingsJson: [String: AnyObject]?
+    
+    //Constructor
+    init(){
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            fileURL = dir.appendingPathComponent(file)
-            //writeSave(text: text)
-            settingsJson = readSave()
+            self.fileURL = dir.appendingPathComponent(file)
+            print(self.fileURL!)
+            self.settingsJson = self.readSave()
         }
-
-        // Do any additional setup after loading the view.
     }
     
-    func readSave() -> [String:AnyObject]{
+    //Return the JSON on the settings file
+    func readSave() -> [String:AnyObject]?{
         do {
             let text = try String(contentsOf: fileURL!, encoding: .utf8)
             let data = Data(text.utf8)
             // make sure this JSON is in the format we expect
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
-                print("Find JSON")
                 return json
             }
         }
         catch {/* error handling here */}
-        let error: [String:AnyObject] = [:]
-        return error
+        return nil
     }
     
-    func writeSave(text: String){
+    //Write json on file
+    func writeSave(username: String, highScore: Int, difficulty: Int, numberOfBombs: Int, numberOfColumns: Int, numberOfRows: Int){
+        /// The number of rows on the board
+        let line = "{\"username\":\"\(username)\",\"highTime\":\(highScore),\"difficulty\":\(difficulty), \"numberOfBombs\":\(numberOfBombs), \"numberOfColumns\":\(numberOfColumns), \"numberOfRows\":\(numberOfRows)}"
         do {
-            try text.write(to: fileURL!, atomically: false, encoding: .utf8)
+            try line.write(to: self.fileURL!, atomically: false, encoding: .utf8)
         }
         catch {/* error handling here */}
     }
+}
+
+class SettingsViewController: UIViewController {
+    //Get Elements of View
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var highScoreLabel: UILabel!
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //Create Variable
+    let settings = Setting()
+    var settingsJson: [String:AnyObject] = [:]
+    
+    //Start Function
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Assign Variables and textLabel
+        settingsJson = settings.settingsJson!
+        usernameTextField.text = settingsJson["username"] as? String
+        highScoreLabel.text = String((settingsJson["highTime"] as? Int)!)
     }
-    */
-
+    
+    //Click on Save Button
+    @IBAction func saveSettings(_ sender: Any) {
+        settings.writeSave(username: usernameTextField.text!, highScore: self.settingsJson["highTime"] as! Int, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
+        self.loading.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.loading.stopAnimating()
+            
+            self.saveButton.setTitle("Compte Modifié", for: .normal)
+            self.saveButton.backgroundColor = UIColor.green
+            self.saveButton.layer.opacity = 0.8
+        }
+    }
 }
