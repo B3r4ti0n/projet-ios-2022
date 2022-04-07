@@ -9,8 +9,8 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    let numbersOfRows = GameSettings().numberOfRows
-    let numbersOfColumns = GameSettings().numberOfColumns
+    let numbersOfRows = 10
+    let numbersOfColumns = 10
     let numbersOfBombs = GameSettings().numberOfBombs
     var randomTab:[Int] = []
     var tabStructure:[Int] = []
@@ -18,9 +18,9 @@ class GameViewController: UIViewController {
     var timer = Timer()
     
     override func viewDidLoad() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            print("Timer fired!")
-        }
+//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+//            print("Timer fired!")
+//        }
         
         super.viewDidLoad()
         
@@ -36,11 +36,11 @@ class GameViewController: UIViewController {
                 randomTab.append(intRandom)
             }
         }
-        
+        print(randomTab)
         //boucle d'affiche du grid sur la page minesweeper
         var countTag: Int = 1
-        for j in 0..<numbersOfRows {
-            for i in 0..<numbersOfColumns {
+        for j in 0..<numbersOfRows{
+            for i in 0..<numbersOfColumns{
                 button = UIButton(frame: CGRect(x: xvalue, y: yvalue, width: 30 , height: 30))
                 button.setBackgroundImage(UIImage(named: "Minesweeper_tile"), for: UIControl.State.normal)
                 button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
                 
                 buttonsTab.append(button)
                 
-                if randomTab.contains(countTag-1){
+                if randomTab.contains(countTag){
                     tabStructure.append(-1)
                 }
                 else{
@@ -84,9 +84,11 @@ class GameViewController: UIViewController {
     @objc func buttonAction(sender: UIButton!) {
         print(sender.tag)
         if randomTab.contains(sender.tag){
-            displayImageEnable()
+            for index in 0..<tabStructure.count{
+                displayButtonImageEnable(indexButton: index, indexCell: index)
+            }
         }else{
-            sender.setBackgroundImage(UIImage(named: "Minesweeper_0"), for: UIControl.State.normal)
+            displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag)
         }
     }
     
@@ -224,14 +226,8 @@ class GameViewController: UIViewController {
         return tabToReturn
         
     }
-    func displayImageEnable(){
-        for index in 0...tabStructure.count-1{
-            buttonsTab[index].isEnabled = false
-            if !(tabStructure[index] == -1){
-                buttonsTab[index].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[index])"), for: UIControl.State.normal)
-            }else{
-                buttonsTab[index].setBackgroundImage(UIImage(named: "Minesweeper_Bomb"), for: UIControl.State.normal)
-            }
-        }
+    func displayButtonImageEnable(indexButton: Int , indexCell: Int){
+            buttonsTab[indexButton].isEnabled = false
+            buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
     }
 }
