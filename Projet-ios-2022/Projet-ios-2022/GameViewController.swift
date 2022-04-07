@@ -94,12 +94,27 @@ class GameViewController: UIViewController {
         }
         print(tabStructure)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "endSegue"{
+            if let destination = segue.destination as? gameEndViewController{
+                destination.endStatusString = "PERDU"
+                destination.endScore = 0
+                //(self.minutes * 60) + self.seconds
+            }
+        }
+    }
     
     @objc func buttonAction(sender: UIButton!) {
         print(sender.tag)
         if randomTab.contains(sender.tag){
+            self.timer.invalidate()
             for index in 0..<tabStructure.count{
-                displayButtonImageEnable(indexButton: index, indexCell: index)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.displayButtonImageEnable(indexButton: index, indexCell: index)
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.performSegue(withIdentifier: "endSegue", sender: self)
             }
         }else{
             displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag-1)

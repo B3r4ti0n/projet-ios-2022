@@ -39,11 +39,12 @@ class Setting{
     
     //Write json on file
     func writeSave(username: String, highScore: Int, difficulty: Int, numberOfBombs: Int, numberOfColumns: Int, numberOfRows: Int){
-        /// The number of rows on the board
+        
         let line = "{\"username\":\"\(username)\",\"highTime\":\(highScore),\"difficulty\":\(difficulty), \"numberOfBombs\":\(numberOfBombs), \"numberOfColumns\":\(numberOfColumns), \"numberOfRows\":\(numberOfRows)}"
         do {
             try line.write(to: self.fileURL!, atomically: false, encoding: .utf8)
         }
+        
         catch {/* error handling here */}
     }
 }

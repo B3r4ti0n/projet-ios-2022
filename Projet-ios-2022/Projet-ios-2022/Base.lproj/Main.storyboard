@@ -145,6 +145,77 @@
             </objects>
             <point key="canvasLocation" x="676.81159420289862" y="747.99107142857144"/>
         </scene>
+        <!--Game End View Controller-->
+        <scene sceneID="NYY-8S-RDR">
+            <objects>
+                <viewController storyboardIdentifier="gameEnd" id="AGP-Fe-Drc" customClass="gameEndViewController" customModule="Projet_ios_2022" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j79-YG-eiU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swH-Or-d5S">
+                                <rect key="frame" x="93" y="63" width="229" height="78"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="GHD-4p-dzv">
+                                <rect key="frame" x="0.0" y="20" width="414" height="4"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="YTR-xI-cF8">
+                                <rect key="frame" x="0.0" y="804" width="414" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E5-iD-Ej2">
+                                <rect key="frame" x="114" y="382.5" width="115" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g64-IR-1Tb">
+                                <rect key="frame" x="237" y="382.5" width="85" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" systemColor="linkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0P3-XS-8r4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0P3-XS-8r4" firstAttribute="trailing" secondItem="g64-IR-1Tb" secondAttribute="trailing" constant="92" id="2Dp-pw-qZ2"/>
+                            <constraint firstItem="0P3-XS-8r4" firstAttribute="trailing" secondItem="g64-IR-1Tb" secondAttribute="trailing" constant="92" id="49C-Rh-lLV"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="centerY" secondItem="0P3-XS-8r4" secondAttribute="centerY" id="4ie-KX-UZE"/>
+                            <constraint firstItem="9E5-iD-Ej2" firstAttribute="centerY" secondItem="0P3-XS-8r4" secondAttribute="centerY" id="5Sf-rb-Suq"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="leading" secondItem="0P3-XS-8r4" secondAttribute="leading" constant="237" id="I3e-2m-42K"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="top" secondItem="0P3-XS-8r4" secondAttribute="top" constant="382.5" id="Ky1-TI-uIZ"/>
+                            <constraint firstItem="YTR-xI-cF8" firstAttribute="centerX" secondItem="swH-Or-d5S" secondAttribute="centerX" id="Umf-rI-irz"/>
+                            <constraint firstItem="0P3-XS-8r4" firstAttribute="bottom" secondItem="g64-IR-1Tb" secondAttribute="bottom" constant="382.5" id="Wcy-Vv-gHu"/>
+                            <constraint firstItem="swH-Or-d5S" firstAttribute="centerX" secondItem="0P3-XS-8r4" secondAttribute="centerX" id="YPr-5P-pLf"/>
+                            <constraint firstItem="0P3-XS-8r4" firstAttribute="bottom" secondItem="g64-IR-1Tb" secondAttribute="bottom" constant="382.5" id="fQH-pP-7pp"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="centerY" secondItem="0P3-XS-8r4" secondAttribute="centerY" id="g4i-dK-4FO"/>
+                            <constraint firstItem="9E5-iD-Ej2" firstAttribute="leading" secondItem="0P3-XS-8r4" secondAttribute="leading" constant="114" id="hlJ-ri-DU7"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="leading" secondItem="0P3-XS-8r4" secondAttribute="leading" constant="237" id="kPt-Nz-Zf6"/>
+                            <constraint firstItem="0P3-XS-8r4" firstAttribute="trailing" secondItem="9E5-iD-Ej2" secondAttribute="trailing" constant="185" id="nGH-r7-7dl"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="top" secondItem="0P3-XS-8r4" secondAttribute="top" constant="382.5" id="nL0-hN-Jln"/>
+                            <constraint firstItem="YTR-xI-cF8" firstAttribute="trailing" secondItem="GHD-4p-dzv" secondAttribute="trailing" id="pLi-YX-WMg"/>
+                            <constraint firstItem="swH-Or-d5S" firstAttribute="top" secondItem="0P3-XS-8r4" secondAttribute="top" constant="63" id="uXs-FS-4ao"/>
+                            <constraint firstItem="YTR-xI-cF8" firstAttribute="leading" secondItem="0P3-XS-8r4" secondAttribute="leading" id="xRD-JM-5za"/>
+                            <constraint firstItem="GHD-4p-dzv" firstAttribute="top" secondItem="0P3-XS-8r4" secondAttribute="top" constant="20" id="ySW-mP-tTB"/>
+                            <constraint firstItem="g64-IR-1Tb" firstAttribute="centerY" secondItem="0P3-XS-8r4" secondAttribute="centerY" id="zJY-lE-O9f"/>
+                            <constraint firstItem="YTR-xI-cF8" firstAttribute="leading" secondItem="GHD-4p-dzv" secondAttribute="leading" id="zxV-fO-8yf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Knf-Js-8K2"/>
+                    <connections>
+                        <outlet property="endStatusLabel" destination="swH-Or-d5S" id="KYS-LM-hx1"/>
+                        <outlet property="progressBar" destination="GHD-4p-dzv" id="1hZ-OS-RTt"/>
+                        <outlet property="progressBar2" destination="YTR-xI-cF8" id="Jwe-Xb-6zW"/>
+                        <outlet property="scoreLabel" destination="g64-IR-1Tb" id="Cqy-am-2UA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ghg-uG-A9z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1682.608695652174" y="747.99107142857144"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="GT5-iH-DHt">
             <objects>
@@ -170,6 +241,7 @@
                     </view>
                     <connections>
                         <outlet property="timerLabel" destination="ylD-R1-14w" id="myS-u4-tkG"/>
+                        <segue destination="AGP-Fe-Drc" kind="modal" identifier="endSegue" id="mWi-Dz-L0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMY-a8-qWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
