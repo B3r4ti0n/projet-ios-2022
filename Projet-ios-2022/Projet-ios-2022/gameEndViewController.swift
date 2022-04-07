@@ -81,8 +81,10 @@ class gameEndViewController: UIViewController {
                     let id: String = document.documentID
                     let username: String = document.data()["username"]! as! String
                     let time: Int = document.data()["time"]! as! Int
-                    if username == self.settings.settingsJson!["username"] as! String && time < self.settings.settingsJson!["highTime"] as! Int{
+                    if username == self.settings.settingsJson!["username"] as! String{
                         find = true
+                    }
+                    if username == self.settings.settingsJson!["username"] as! String && time < self.settings.settingsJson!["highTime"] as! Int{
                         var user = db.collection("minesweeper").document(id)
                         user.updateData([
                             "time": self.settings.settingsJson!["highTime"] as! Int

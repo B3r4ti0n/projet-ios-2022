@@ -63,7 +63,7 @@ class GameViewController: UIViewController {
                 
                 buttonsTab.append(button)
                 
-                if randomTab.contains(countTag){
+                if randomTab.contains(countTag-1){
                     tabStructure.append(-1)
                 }
                 else{
@@ -106,24 +106,22 @@ class GameViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         print(sender.tag)
-        if randomTab.contains(sender.tag){
+        if randomTab.contains(sender.tag-1){
             self.timer.invalidate()
             for index in 0..<tabStructure.count{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.displayButtonImageEnable(indexButton: index, indexCell: index)
-                }
+                self.displayButtonImageEnable(indexButton: index, indexCell: index)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.performSegue(withIdentifier: "endSegue", sender: self)
             }
         }else{
-            displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag-1)
+            self.displayButtonImageEnable(indexButton: sender.tag-1, indexCell: sender.tag-1)
         }
     }
     
     func verification (id : Int) -> [Int]{
         
-        let gauche = [0,10,20,30,40,50,60,70,80,90]
+        let gauche = [0,10,20,30,40,50,60,70,80,90, 110]
         let droite = [1,11,21,31,41,51,61,71,81,91, 101]
         var tabToReturn: [Int] = []
          
@@ -255,8 +253,9 @@ class GameViewController: UIViewController {
         return tabToReturn
         
     }
+    
     func displayButtonImageEnable(indexButton: Int , indexCell: Int){
-            buttonsTab[indexButton].isEnabled = false
-            buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
+        self.buttonsTab[indexButton].isEnabled = false
+        self.buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
     }
 }
