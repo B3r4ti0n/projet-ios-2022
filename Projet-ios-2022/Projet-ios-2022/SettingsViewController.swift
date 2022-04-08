@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
     
     //Click on Save Button
     @IBAction func saveSettings(_ sender: Any) {
-        settings.writeSave(username: usernameTextField.text!, highScore: self.settingsJson["highTime"] as! Int, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
+        settings.writeSave(username: usernameTextField.text!, highScore: 9999 , difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
         
         self.loading.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

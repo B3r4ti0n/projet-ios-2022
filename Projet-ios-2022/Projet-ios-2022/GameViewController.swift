@@ -12,7 +12,6 @@ class GameViewController: UIViewController {
     var numbersOfRows: Int = 10
     var numbersOfColumns: Int = 10
     var numbersOfBombs: Int = 10
-    @IBOutlet weak var timerLabel: UILabel!
     var randomTab:[Int] = []
     var tabStructure:[Int] = []
     var buttonsTab: [UIButton] = []
@@ -21,6 +20,10 @@ class GameViewController: UIViewController {
     var seconds: Int = 0
     var squareSize: CGFloat = 30
     var gameFinishCount: Int = 0
+    var endString: String = ""
+    var endScore: Int = 0
+    
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var gameFinishTextField: UITextField!
     
     override func viewDidLoad() {
@@ -98,8 +101,8 @@ class GameViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "endSegue"{
             if let destination = segue.destination as? gameEndViewController{
-                destination.endStatusString = "PERDU"
-                destination.endScore = 0
+                destination.endStatusString = self.endString
+                destination.endScore = self.endScore
                 //(self.minutes * 60) + self.seconds
             }
         }
@@ -107,13 +110,17 @@ class GameViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         
-            if randomTab.contains(sender.tag){
+            if randomTab.contains(sender.tag-1){
+                self.endScore = 0
+                self.endString = "PERDU"
                 displayTheTileImageOfAllButtonInTheGrid()
             }else{
                 showPreciseTileOfGridButton(indexButton: sender.tag-1, indexCell: sender.tag-1)
                 gameFinishCount+=1
             }
         if gameFinishCount == (numbersOfRows * numbersOfColumns) - numbersOfBombs{
+            self.endScore = (self.minutes * 60) + self.seconds
+            self.endString = "GAGNÉ"
             displayTheTileImageOfAllButtonInTheGrid()
         }
     }
@@ -256,11 +263,15 @@ class GameViewController: UIViewController {
     func showPreciseTileOfGridButton(indexButton: Int , indexCell: Int){
             buttonsTab[indexButton].isEnabled = false
             buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
-    }
+    } 
     
     func displayTheTileImageOfAllButtonInTheGrid(){
+        self.timer.invalidate()
         for index in 0..<tabStructure.count{
             showPreciseTileOfGridButton(indexButton: index, indexCell: index)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.performSegue(withIdentifier: "endSegue", sender: self)
         }
     }
 }

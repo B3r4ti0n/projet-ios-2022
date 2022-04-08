@@ -64,7 +64,7 @@ class gameEndViewController: UIViewController {
     
     
     func localCheck(){
-        if self.endScore > self.settings.settingsJson!["highTime"] as! Int{
+        if self.endScore < self.settings.settingsJson!["highTime"] as! Int && self.endScore > 0{
             self.settings.writeSave(username: self.settings.settingsJson!["username"] as! String, highScore: self.endScore, difficulty: 0, numberOfBombs: self.settings.settingsJson!["numberOfBombs"] as! Int, numberOfColumns: self.settings.settingsJson!["numberOfColumns"] as! Int, numberOfRows: self.settings.settingsJson!["numberOfRows"] as! Int)
         }
         
@@ -84,10 +84,11 @@ class gameEndViewController: UIViewController {
                     if username == self.settings.settingsJson!["username"] as! String{
                         find = true
                     }
-                    if username == self.settings.settingsJson!["username"] as! String && time < self.settings.settingsJson!["highTime"] as! Int{
+                    if username == self.settings.settingsJson!["username"] as! String && time > self.endScore && self.endScore > 0{
+                        print("updated")
                         var user = db.collection("minesweeper").document(id)
                         user.updateData([
-                            "time": self.settings.settingsJson!["highTime"] as! Int
+                            "time": self.endScore
                         ]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")
