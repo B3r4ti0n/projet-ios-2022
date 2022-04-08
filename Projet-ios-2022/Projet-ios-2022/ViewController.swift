@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var imageHome: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Home"
@@ -17,8 +18,16 @@ class ViewController: UIViewController {
         if settings.settingsJson == nil{
             settings.writeSave(username: "USER", highScore: 9999, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
         }
+        
+        defileImage()
 
         // Do any additional setup after loading the view.
+    }
+    func defileImage(){
+        imageHome.animationImages = [UIImage(named: "Minesweeper_8")!,UIImage(named: "Minesweeper_7")!,UIImage(named: "Minesweeper_6")!,UIImage(named: "Minesweeper_5")!,UIImage(named: "Minesweeper_4")!,UIImage(named: "Minesweeper_3")!,UIImage(named: "Minesweeper_2")!,UIImage(named: "Minesweeper_1")!,UIImage(named: "Minesweeper_-1")!]
+        imageHome.animationDuration = 10
+        imageHome.animationRepeatCount = 10
+        imageHome.startAnimating()
     }
 
     @IBAction func goToSettings(_ sender: Any) {

@@ -23,6 +23,9 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" systemColor="linkColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-5I-XwS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="4"/>
+                            </progressView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="sVy-f0-4PM">
                                 <rect key="frame" x="0.0" y="858" width="414" height="4"/>
                             </progressView>
@@ -32,9 +35,6 @@
                                     <constraint firstAttribute="height" constant="56" id="6S5-u2-Mh4"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="h0U-5I-XwS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="4"/>
-                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
