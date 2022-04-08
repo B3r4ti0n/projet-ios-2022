@@ -24,28 +24,41 @@ class gameEndViewController: UIViewController {
     var endStatusString: String = ""
     var endScore: Int = 0
     let settings = Setting()
+    var numberOfBombs: Int = 0
+    var numberOfColumns: Int = 0
+    var numberOfRows: Int = 0
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.numberOfBombs = settings.settingsJson!["numberOfBombs"] as! Int
+        self.numberOfColumns = settings.settingsJson!["numberOfColumns"] as! Int
+        self.numberOfRows = settings.settingsJson!["numberOfRows"] as! Int
+        
+        //FireBase init
         var db: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        
         db = Firestore.firestore()
         
-        super.viewDidLoad()
+        //Set String and score
         endStatusLabel.text = endStatusString
         scoreLabel.text = "\(self.endScore)"
         
+        // ProgressBar Red if Lose
         if self.endScore == 0{
             progressBar.tintColor = .red
             progressBar2.tintColor = .red
         }
+        
+        //Compare Score and Write
         localCheck()
         databaseCheck(db: db)
 
         // Do any additional setup after loading the view.
     }
     
+    //Add Document to FireBase
     func addDocument(db: Firestore!) {
             var ref: DocumentReference? = nil
             ref = db.collection("minesweeper").addDocument(data: [
@@ -59,18 +72,17 @@ class gameEndViewController: UIViewController {
                     print("Document added with ID: \(ref!.documentID)")
                 }
             }
-            // [END add_document]
         }
     
-    
+    //Check LocalFile
     func localCheck(){
         if self.endScore < self.settings.settingsJson!["highTime"] as! Int && self.endScore > 0{
-            self.settings.writeSave(username: self.settings.settingsJson!["username"] as! String, highScore: self.endScore, difficulty: 0, numberOfBombs: self.settings.settingsJson!["numberOfBombs"] as! Int, numberOfColumns: self.settings.settingsJson!["numberOfColumns"] as! Int, numberOfRows: self.settings.settingsJson!["numberOfRows"] as! Int)
+            self.settings.writeSave(username: self.settings.settingsJson!["username"] as! String, highScore: self.endScore, difficulty: 0, numberOfBombs: self.numberOfBombs, numberOfColumns: self.numberOfColumns, numberOfRows: self.numberOfRows)
         }
         
     }
     
-    
+    //Check Database
     func databaseCheck(db: Firestore!){
         db.collection("minesweeper").getDocuments() { (querySnapshot, err) in
             if let err = err {

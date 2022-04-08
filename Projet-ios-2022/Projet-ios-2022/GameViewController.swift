@@ -30,6 +30,7 @@ class GameViewController: UIViewController {
         numbersOfRows = setting.settingsJson?["numberOfRows"] as! Int
         numbersOfColumns = setting.settingsJson?["numberOfColumns"] as! Int
         numbersOfBombs = setting.settingsJson?["numberOfBombs"] as! Int
+        
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.seconds += 1
             if self.seconds == 60{
@@ -51,7 +52,7 @@ class GameViewController: UIViewController {
         
         //random bombs tab
         while randomTab.count != self.numbersOfBombs{
-            let intRandom = Int.random(in: 0..<100)
+            let intRandom = Int.random(in: 0..<numbersOfColumns*numbersOfRows)
             if !randomTab.contains(intRandom){
                 randomTab.append(intRandom)
             }
@@ -127,8 +128,24 @@ class GameViewController: UIViewController {
     
     func verification (id : Int) -> [Int]{
         
-        let gauche = [0,10,20,30,40,50,60,70,80,90, 110]
-        let droite = [1,11,21,31,41,51,61,71,81,91, 101]
+        func getTabGauche()->[Int]{
+            var tabReturn:[Int] = []
+            for i in 0...self.numbersOfRows+1{
+                tabReturn.append(self.numbersOfColumns*i)
+            }
+            return tabReturn
+        }
+        
+        func getTabDroite()->[Int]{
+            var tabReturn:[Int] = []
+            for i in 0...self.numbersOfRows+1{
+                tabReturn.append((self.numbersOfColumns*i)+1)
+            }
+            return tabReturn
+        }
+        
+        let gauche = getTabGauche()
+        let droite = getTabDroite()
         var tabToReturn: [Int] = []
          
         func Gauche (id : Int)->Int?{
@@ -152,70 +169,70 @@ class GameViewController: UIViewController {
             return id + 1
         }
         func Haut (id : Int) -> Int?{
-                if id - 10 > 0{
+            if id - self.numbersOfColumns > 0{
                     //faire comparatif du block haut : id - 10
                     print("Haut : \(id - 10)")
-                    return id - 10
+                return id - self.numbersOfColumns
                 }
             return nil
         }
         func Bas (id : Int) -> Int?{
-                if id + 10 <= 100{
+            if id + self.numbersOfColumns <= self.numbersOfColumns * self.numbersOfRows{
                     //faire comparatif du block Bas : id + 10
                     print("Bas : \(id + 10)")
-                    return id + 10
+                return id + self.numbersOfColumns
                 }
             return nil
         }
         func HautGauche (id : Int)->Int?{
-            if id - 10 > 0{
+            if id - self.numbersOfColumns > 0{
                 for i in gauche{
-                    if id - 11 == i{
+                    if id - (self.numbersOfColumns+1) == i{
                         return nil
                     }
                 }
                 //faire comparatif du block HautGauche : id - 11
-                print("HautGauche : \(id - 11)")
-                return id-11
+                print("HautGauche : \(id - (self.numbersOfColumns+1))")
+                return id-(self.numbersOfColumns+1)
             }
             return nil
         }
         func HautDroite (id : Int)->Int?{
-            if id - 10 >= 0{
+            if id - self.numbersOfColumns >= 0{
                 for i in droite{
-                    if id - 9 == i{
+                    if id - (self.numbersOfColumns-1) == i{
                         return nil
                     }
                 }
                 //faire comparatif du block HautDroite : id - 9
-                print("HautDroite : \(id - 9)")
-                return id - 9
+                print("HautDroite : \(id - (self.numbersOfColumns-1))")
+                return id - (self.numbersOfColumns-1)
             }
             return nil
         }
         func BasGauche (id : Int)->Int?{
-            if id + 10 <= 100{
+            if id + self.numbersOfColumns <= self.numbersOfColumns*self.numbersOfRows{
                 for i in gauche{
-                    if id + 9 == i{
+                    if id + (self.numbersOfColumns-1) == i{
                         return nil
                     }
                 }
                 //faire comparatif du block BasGauche : id + 9
-                print("BasGauche : \(id + 9)")
-                return id + 9
+                print("BasGauche : \(id + (self.numbersOfColumns-1))")
+                return id + (self.numbersOfColumns-1)
             }
             return nil
         }
         func BasDroite (id : Int)->Int?{
-            if id + 10 <= 100{
+            if id + self.numbersOfColumns <= self.numbersOfColumns*self.numbersOfRows{
                 for i in droite{
-                    if id + 11 == i{
+                    if id + (self.numbersOfColumns+1) == i{
                         return nil
                     }
                 }
                 //faire comparatif du block BasDroite : id + 11
-                print("BasDroite : \(id + 11)")
-                return id + 11
+                print("BasDroite : \(id + (self.numbersOfColumns+1))")
+                return id + (self.numbersOfColumns+1)
             }
             return nil
         }
