@@ -97,8 +97,7 @@ class gameEndViewController: UIViewController {
                         find = true
                     }
                     if username == self.settings.settingsJson!["username"] as! String && time > self.endScore && self.endScore > 0{
-                        print("updated")
-                        var user = db.collection("minesweeper").document(id)
+                        let user = db.collection("minesweeper").document(id)
                         user.updateData([
                             "time": self.endScore
                         ]) { err in

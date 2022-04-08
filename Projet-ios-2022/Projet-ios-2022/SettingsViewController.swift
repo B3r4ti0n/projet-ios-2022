@@ -18,7 +18,6 @@ class Setting{
     init(){
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             self.fileURL = dir.appendingPathComponent(file)
-            print(self.fileURL!)
             self.settingsJson = self.readSave()
         }
     }

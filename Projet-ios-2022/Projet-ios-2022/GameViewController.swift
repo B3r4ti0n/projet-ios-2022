@@ -126,9 +126,11 @@ class GameViewController: UIViewController {
             displayTheTileImageOfAllButtonInTheGrid()
         }
     }
+    //checks if a square is actually next to it
     func verification (id : Int) -> [Int]{
         
-        func getTabGauche()->[Int]{
+        //Initialization of checkboxes left
+        func getTabLeft()->[Int]{
             var tabReturn:[Int] = []
             for i in 0...self.numbersOfRows+1{
                 tabReturn.append(self.numbersOfColumns*i)
@@ -136,7 +138,8 @@ class GameViewController: UIViewController {
             return tabReturn
         }
         
-        func getTabDroite()->[Int]{
+        //Initialization of checkboxes right
+        func getTabRight()->[Int]{
             var tabReturn:[Int] = []
             for i in 0...self.numbersOfRows+1{
                 tabReturn.append((self.numbersOfColumns*i)+1)
@@ -144,134 +147,134 @@ class GameViewController: UIViewController {
             return tabReturn
         }
         
-        let gauche = getTabGauche()
-        let droite = getTabDroite()
+        let left = getTabLeft()
+        let right = getTabRight()
         var tabToReturn: [Int] = []
          
-        func Gauche (id : Int)->Int?{
-            for i in gauche{
+        //Compare the boxes to the left
+        func Left (id : Int)->Int?{
+            for i in left{
                 if id - 1 == i{
                     return nil
                 }
             }
-            //faire comparatif du block gauche : id - 1
             print("gauche : \(id - 1)")
             return id - 1
         }
-        func Droite (id : Int)->Int?{
-            for i in droite{
+        //Compare the boxes to the right
+        func Right (id : Int)->Int?{
+            for i in right{
                 if id + 1 == i{
                     return nil
                 }
             }
-            //faire comparatif du block droite : id + 1
             print("Droite : \(id + 1)")
             return id + 1
         }
-        func Haut (id : Int) -> Int?{
+        //Compare the boxes on the top
+        func Top (id : Int) -> Int?{
             if id - self.numbersOfColumns > 0{
-                    //faire comparatif du block haut : id - 10
                     print("Haut : \(id - 10)")
                 return id - self.numbersOfColumns
                 }
             return nil
         }
-        func Bas (id : Int) -> Int?{
+        //Compare the boxes on the bottom
+        func Bottom (id : Int) -> Int?{
             if id + self.numbersOfColumns <= self.numbersOfColumns * self.numbersOfRows{
-                    //faire comparatif du block Bas : id + 10
                     print("Bas : \(id + 10)")
                 return id + self.numbersOfColumns
                 }
             return nil
         }
-        func HautGauche (id : Int)->Int?{
+        //Compare the boxes on the top left
+        func TopLeft (id : Int)->Int?{
             if id - self.numbersOfColumns > 0{
-                for i in gauche{
+                for i in left{
                     if id - (self.numbersOfColumns+1) == i{
                         return nil
                     }
                 }
-                //faire comparatif du block HautGauche : id - 11
                 print("HautGauche : \(id - (self.numbersOfColumns+1))")
                 return id-(self.numbersOfColumns+1)
             }
             return nil
         }
-        func HautDroite (id : Int)->Int?{
+        //Compare the boxes on the top right
+        func TopRight (id : Int)->Int?{
             if id - self.numbersOfColumns >= 0{
-                for i in droite{
+                for i in right{
                     if id - (self.numbersOfColumns-1) == i{
                         return nil
                     }
                 }
-                //faire comparatif du block HautDroite : id - 9
                 print("HautDroite : \(id - (self.numbersOfColumns-1))")
                 return id - (self.numbersOfColumns-1)
             }
             return nil
         }
-        func BasGauche (id : Int)->Int?{
+        //Compare the boxes on the bottom left
+        func BottomLeft (id : Int)->Int?{
             if id + self.numbersOfColumns <= self.numbersOfColumns*self.numbersOfRows{
-                for i in gauche{
+                for i in left{
                     if id + (self.numbersOfColumns-1) == i{
                         return nil
                     }
                 }
-                //faire comparatif du block BasGauche : id + 9
                 print("BasGauche : \(id + (self.numbersOfColumns-1))")
                 return id + (self.numbersOfColumns-1)
             }
             return nil
         }
-        func BasDroite (id : Int)->Int?{
+        //Compare the boxes on the bottom right
+        func BottomRigth (id : Int)->Int?{
             if id + self.numbersOfColumns <= self.numbersOfColumns*self.numbersOfRows{
-                for i in droite{
+                for i in right{
                     if id + (self.numbersOfColumns+1) == i{
                         return nil
                     }
                 }
-                //faire comparatif du block BasDroite : id + 11
                 print("BasDroite : \(id + (self.numbersOfColumns+1))")
                 return id + (self.numbersOfColumns+1)
             }
             return nil
         }
 
-        let haut = Haut(id: id)
-        let bas = Bas(id: id)
+        let top = Top(id: id)
+        let bottom = Bottom(id: id)
         
-        let idgauche = Gauche(id: id)
-        let iddroite = Droite(id: id)
+        let idLeft = Left(id: id)
+        let idRight = Right(id: id)
         
-        let hautDroite = HautDroite(id: id)
-        let hautGauche = HautGauche(id: id)
+        let topRight = TopRight(id: id)
+        let topLeft = TopLeft(id: id)
         
-        let basGauche = BasGauche(id: id)
-        let basDroite = BasDroite(id: id)
+        let bottomLeft = BottomLeft(id: id)
+        let bottomRigth = BottomRigth(id: id)
         
-        if haut != nil{
-            tabToReturn.append(haut!)
+        if top != nil{
+            tabToReturn.append(top!)
         }
-        if bas != nil{
-            tabToReturn.append(bas!)
+        if bottom != nil{
+            tabToReturn.append(bottom!)
         }
-        if idgauche != nil{
-            tabToReturn.append(idgauche!)
+        if idLeft != nil{
+            tabToReturn.append(idLeft!)
         }
-        if iddroite != nil{
-            tabToReturn.append(iddroite!)
+        if idRight != nil{
+            tabToReturn.append(idRight!)
         }
-        if hautDroite != nil{
-            tabToReturn.append(hautDroite!)
+        if topRight != nil{
+            tabToReturn.append(topRight!)
         }
-        if hautGauche != nil{
-            tabToReturn.append(hautGauche!)
+        if topLeft != nil{
+            tabToReturn.append(topLeft!)
         }
-        if basGauche != nil{
-            tabToReturn.append(basGauche!)
+        if bottomLeft != nil{
+            tabToReturn.append(bottomLeft!)
         }
-        if basDroite != nil{
-            tabToReturn.append(basDroite!)
+        if bottomRigth != nil{
+            tabToReturn.append(bottomRigth!)
         }
         return tabToReturn
         
