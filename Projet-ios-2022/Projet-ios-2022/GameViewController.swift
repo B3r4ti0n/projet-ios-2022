@@ -46,6 +46,7 @@ class GameViewController: UIViewController {
         }
         
         super.viewDidLoad()
+        self.title = "Partie"
         //variable declaration
         var xvalue = self.view.frame.width / 16
         var yvalue = (self.view.frame.height / 4) + 25
