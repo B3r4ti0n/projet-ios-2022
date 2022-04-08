@@ -8,6 +8,7 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    //variable global declaration
     let setting = Setting()
     var numbersOfRows: Int = 10
     var numbersOfColumns: Int = 10
@@ -23,9 +24,11 @@ class GameViewController: UIViewController {
     var endString: String = ""
     var endScore: Int = 0
     
+    //variable link to view
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var gameFinishTextField: UITextField!
     
+    //script to launch a grid game
     override func viewDidLoad() {
         numbersOfRows = setting.settingsJson?["numberOfRows"] as! Int
         numbersOfColumns = setting.settingsJson?["numberOfColumns"] as! Int
@@ -42,7 +45,7 @@ class GameViewController: UIViewController {
         }
         
         super.viewDidLoad()
-        
+        //variable declaration
         var xvalue = self.view.frame.width / 16
         var yvalue = (self.view.frame.height / 4) + 25
         var button = UIButton()
@@ -56,8 +59,7 @@ class GameViewController: UIViewController {
                 randomTab.append(intRandom)
             }
         }
-        print(randomTab)
-        //boucle d'affiche du grid sur la page minesweeper
+        //repeat button for create a grid game
         var countTag: Int = 1
         for j in 0..<numbersOfRows{
             for i in 0..<numbersOfColumns{
@@ -96,7 +98,6 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        print(tabStructure)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "endSegue"{
@@ -107,7 +108,7 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
+    //function for click on tile of the grid game
     @objc func buttonAction(sender: UIButton!) {
         
             if randomTab.contains(sender.tag-1){
@@ -124,7 +125,6 @@ class GameViewController: UIViewController {
             displayTheTileImageOfAllButtonInTheGrid()
         }
     }
-    
     func verification (id : Int) -> [Int]{
         
         let gauche = [0,10,20,30,40,50,60,70,80,90, 110]
@@ -259,12 +259,12 @@ class GameViewController: UIViewController {
         return tabToReturn
         
     }
-    
+    //modify a precise tile in a grid game
     func showPreciseTileOfGridButton(indexButton: Int , indexCell: Int){
             buttonsTab[indexButton].isEnabled = false
             buttonsTab[indexButton].setBackgroundImage(UIImage(named: "Minesweeper_\(tabStructure[indexCell])"), for: UIControl.State.normal)
     } 
-    
+    //modify alls tiles in a grid game
     func displayTheTileImageOfAllButtonInTheGrid(){
         self.timer.invalidate()
         for index in 0..<tabStructure.count{
