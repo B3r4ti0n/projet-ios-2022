@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -18,7 +17,7 @@ class ViewController: UIViewController {
         if settings.settingsJson == nil{
             settings.writeSave(username: "USER", highScore: 9999, difficulty: 0, numberOfBombs: 10, numberOfColumns: 10, numberOfRows: 10)
         }
-    
+
         // Do any additional setup after loading the view.
     }
 
